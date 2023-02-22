@@ -21,10 +21,200 @@
     </div>
   </div>
 </div>
+<div class="flex flex-col justify-center h-full py-12">
+<div class="self-center items-center justify-center">
+<h1 class="font-bold tracking-widest text-3xl" >Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) Calculator</h1>
+</div>
+<div class="self-center items-center justify-center flex flex-col sm:flex-row w-full md:w-5/6 xl:w-2/3 px-4 sm:px-0">
+    
+    <div class="w-full  sm:text-left sm:w-1/2 py-12 sm:px-8">
+    
+ <div class="w-full max-w-lg">
+    
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <fieldset>
+        <legend class="mb-6">Personal Information</legend>
+        <div class="form-group row mb-6">
+        <label for="gender" class="col-sm-2 col-form-label block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Gender:</label>
+        
+        <select id="gender" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        </div>
+        <div class="flex -mx-2">
+        <div class=" w-1/5 px-2">
+        <label for="weight" class=" w-1/5 col-sm-2 col-form-label block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Weight:</label>
+        </div>
+        <div class=" w-2/5 px-2">
+        <input type="number" placeholder="200" id="weight" required class="appearance-none w-2/5 block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+        </div>
+        <div class=" w-2/5 px-2">
+        <select id="weight-units" class="block appearance-none w-2/5 bg-gray-200 border border-gray-200 w-full mb-6 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <option value="lb" selected>Pounds</option>
+          <option value="kg" >Kilograms</option>
+        </select>
+      </div>
+        </div>
+        <div class="form-group row">
+        <div class="flex -mx-2">
+        <div class=" w-1/5 px-2">
+        <label for="height" class="col-sm-2 col-form-label block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >Height:</label>
+        </div>
+        <div class=" w-2/5 px-2">
+        <input type="number" placeholder="60" id="height" required  aria-describedby="heightBlock" class="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+        </div>
+        <div class=" w-2/5 px-2">
+        <select id="height-units" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <option value="in" selected>Inches</option>
+          <option value="cm" >Centimeters</option>
+        </select>
+        <small id="heightBlock" class="form-text text-muted ">
+          4 feet: 48in <br />5 feet: 60in <br />6 feet: 72in
+        </small>
+        </div>
+        </div>
+        <div class="form-group row">
+        <label for="age" class="col-sm-2 col-form-label block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >Age:</label>
+        <div class="col-sm-10">
+        <input type="number" id="age" required placeholder="18" class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+        </div>
+        </div>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Activity Level</legend>
+        <div class="form-check"><label>
+          <input type="radio" name="activity-level" value="1.2" checked>
+          Sedentary
+        </label></div>
+        <div class="form-check">        <label>
+          <input type="radio" name="activity-level" value="1.375">
+          Lightly Active (1-2 Days/Week)
+        </label></div>
+        <div class="form-check">        <label>
+          <input type="radio" name="activity-level" value="1.55">
+          Moderately Active (3-5 Days/Week)
+        </label></div>
+        <div class="form-check">        <label>
+          <input type="radio" name="activity-level" value="1.725">
+          Very Active (6-7 Days/Week)
+        </label></div>
+        <div class="form-check">        <label>
+          <input type="radio" name="activity-level" value="1.9">
+          Super Active (2x a Day)
+        </label></div>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Goal</legend>
+        <div class="form-check"> <label>
+          <input type="radio" name="goal" value="lose" checked>
+          Lose Weight
+        </label></div>
+        <div class="form-check">        <label>
+          <input type="radio" name="goal" value="maintain">
+          Maintain Weight
+        </label></div>
+        <div class="form-check">        <label>
+          <input type="radio" name="goal" value="gain">
+          Gain Weight
+        </label></div>
+      </fieldset>
+      <br>
+      <button type="button" class="bg-blue-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" onclick="calculate()">Calculate</button>
+    </form>
+    <br>
+    <div class="max-w-sm bg-white rounded overflow-hidden shadow-lg">
+  <div class="px-6 py-4 ">
+    <div class="font-bold text-xl mb-2">Your BMR and TDEE</div>
+    <p class="text-gray-700 text-base">
+      <div id="result"></div>
+    </p>
+  </div>
+  <div class="px-6 pt-4 pb-2">
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#bmr</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#tdee</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#iifym</span>
+  </div>
+</div>
+
+    
+ </div>
+ </div>
+<div class="w-full sm:w-1/3">
+
+<p>    TDEE and BMR are both important measures when it comes to managing your weight and achieving your weight-related goals.</p>
+
+<p>    BMR, or basal metabolic rate, is the number of calories your body burns at rest. This includes the calories needed for basic body functions such as breathing, blood circulation, and maintaining body temperature. Your BMR accounts for a significant portion of your daily calorie expenditure, typically around 60-70%.</p>
+    
+<p>   TDEE, or total daily energy expenditure, is the total number of calories your body burns in a day, including both your BMR and any physical activity you engage in. This includes exercise, walking, standing, and any other movement that burns calories. Your TDEE can vary based on your activity level and other factors, and it is typically higher than your BMR.</p>
+    
+<p>    Knowing your BMR and TDEE can be helpful in achieving your weight-related goals because it can help you determine how many calories you need to consume to maintain your current weight, lose weight, or gain weight. If you want to lose weight, you need to create a calorie deficit by consuming fewer calories than your body burns. On the other hand, if you want to gain weight or build muscle, you need to consume more calories than your body burns.</p>
+    
+<p>    By understanding your BMR and TDEE, you can make more informed decisions about your calorie intake and ensure that you are giving your body the energy it needs to function properly while also achieving your weight-related goals. However, it's important to note that these calculations are estimates and other factors, such as genetics and health conditions, can affect your calorie needs. Therefore, it's always a good idea to consult with a healthcare professional or registered dietitian for personalized advice on achieving your weight-related goals.</p>
+ </div>
+ 
+  </div>
+</div>
 <script>
   new TypeIt(".typeIt", {
     strings: "MealComply",
     speed: 75,
     waitUntilVisible: true
   }).go();
+  function calculate() {
+        // const measurementSystem = document.querySelector('input[name="measurement-system"]:checked').value;
+        let gender = document.getElementById("gender").value;
+        let weight = Number(document.getElementById("weight").value);
+        let height = Number(document.getElementById("height").value);
+const age = Number(document.getElementById("age").value);
+const activityLevel = Number(document.querySelector('input[name="activity-level"]:checked').value);
+const goal = document.querySelector('input[name="goal"]:checked').value;
+    // Convert units if using Imperial system
+    // if (measurementSystem === "imperial") {
+      // Convert weight to kg
+      if (document.getElementById("weight-units").value === "lb") {
+        weight = weight / 2.20462;
+      }
+      // Convert height to cm
+      if (document.getElementById("height-units").value === "in") {
+        height = height * 2.54;
+      }
+    // }
+
+    // Calculate BMR
+    let bmr;
+    if (gender === "male") {
+      bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+    } else {
+      bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+    }
+
+    // Calculate TDEE
+    let tdee;
+    if (activityLevel === 1.2) {
+      tdee = bmr * 1.2;
+    } else if (activityLevel === 1.375) {
+      tdee = bmr * 1.375;
+    } else if (activityLevel === 1.55) {
+      tdee = bmr * 1.55;
+    } else if (activityLevel === 1.725) {
+      tdee = bmr * 1.725;
+    } else {
+      tdee = bmr * 1.9;
+    }
+
+    // Adjust TDEE for goal
+    if (goal === "lose") {
+      tdee = tdee * 0.8;
+    } else if (goal === "maintain") {
+      tdee = tdee;
+    } else {
+      tdee = tdee * 1.2;
+    }
+
+    // Display result
+    document.getElementById("result").innerHTML = `Your BMR is ${bmr.toFixed(2)} calories/day, and your TDEE is ${tdee.toFixed(2)} calories/day.`;
+  }
 </script>
